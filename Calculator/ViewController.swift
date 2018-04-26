@@ -12,28 +12,26 @@ class ViewController: UIViewController {
 
     var numberOnScreen: Double = 0;
     var previousNumber: Double = 0;
-    var performingMath = false;
+    var MatchCalculation = false;
     var operation = 0;
-    
+   
     @IBOutlet weak var label: UILabel!
     
-    @IBAction func numbers(_ sender: UIButton)
-    {
-        if performingMath == true {
+    @IBAction func Numeros(_ sender: UIButton) {
+        if MatchCalculation == true {
             label.text! = String(sender.tag-1)
             numberOnScreen = Double(label.text!)!
-            performingMath = false;
+            MatchCalculation = false;
             
-        }else{
-            
+        }
+        else{
             label.text = label.text! + String(sender.tag-1)
             numberOnScreen = Double(label.text!)!
         }
-        
+    
     }
     
-    @IBAction func operators(_ sender: UIButton)
-    {
+    @IBAction func operators(_ sender: UIButton){
         if label.text != "" && sender.tag != 11 && sender.tag != 12 && sender.tag != 13 && sender.tag != 18{
             previousNumber = Double(label.text!)!
             if sender.tag == 14{
@@ -48,7 +46,7 @@ class ViewController: UIViewController {
             else  if sender.tag == 17{
                 label.text = "+";
             }
-            performingMath = true;
+            MatchCalculation = true;
             operation = sender.tag;
         }
         else  if sender.tag == 18
